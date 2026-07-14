@@ -4,6 +4,7 @@ import { CreateFileDto } from './dto/create-file.dto';
 import { UpdateFileDto } from './dto/update-file.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Express } from 'express';
+import { ResponseMessage } from 'src/decorator/customize';
 
 @Controller('files')
 export class FilesController {
@@ -16,7 +17,8 @@ export class FilesController {
 
 
   @Post('upload')
-  @UseInterceptors(FileInterceptor('file'))
+  @ResponseMessage("Upload file success")
+  @UseInterceptors(FileInterceptor('fileUpload'))
   uploadFile(@UploadedFile(
     new ParseFilePipeBuilder()
       .addFileTypeValidator({
@@ -29,7 +31,9 @@ export class FilesController {
         errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY
       }),
   ) file: Express.Multer.File) {
-    console.log(file);
+    return {
+      filename: file.filename
+    }
   }
 
 
