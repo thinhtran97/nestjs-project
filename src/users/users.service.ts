@@ -61,13 +61,13 @@ export class UsersService {
     delete filter.pageSize;
 
 
-    console.log('Database:', this.userModel.db.name);
-    console.log('Collection:', this.userModel.collection.collectionName);
-    console.log('Count:', await this.userModel.countDocuments());
-    console.log('Filter:', filter);
-    console.log('Count:', await this.userModel.countDocuments());
-    console.log('Find:', await this.userModel.find({}));
-    console.log('FindDeleted:', await this.userModel.findDeleted());
+    // console.log('Database:', this.userModel.db.name);
+    // console.log('Collection:', this.userModel.collection.collectionName);
+    // console.log('Count:', await this.userModel.countDocuments());
+    // console.log('Filter:', filter);
+    // console.log('Count:', await this.userModel.countDocuments());
+    // console.log('Find:', await this.userModel.find({}));
+    // console.log('FindDeleted:', await this.userModel.findDeleted());
 
     // delete filter.sort;
     let offset = (currentPage - 1) * (+pageSize);
